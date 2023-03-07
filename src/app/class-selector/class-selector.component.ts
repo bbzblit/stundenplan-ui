@@ -1,3 +1,4 @@
+import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Class } from '../model/class.model';
@@ -11,13 +12,37 @@ import { selectAllClasses } from '../state/class.selector';
 })
 export class ClassSelectorComponent implements OnInit {
 
-  constructor(private store : Store){};
 
-  public availableClasses = new Set<Class>();
+  constructor(private store: Store) { };
+
+  private NON_ALPHABETIC = /[^A-Za-z0-9]/g;
+
+  private availableClasses = new Array<Class>();
+  public previewClasses = new Array<Class>();
+
+  filterClasses(key: string): void {
+    let keys = key.split(" ");
+
+    for (let idx: number = keys.length; --idx;) {
+      keys[idx] = keys[idx].replace(this.NON_ALPHABETIC, "").toLowerCase();
+    }
+    let _temp_classes = [...this.availableClasses];
+
+    for (let idx: number = _temp_classes.length - 1; --idx;) {
+      _temp_classes[idx] = { ..._temp_classes[idx] };
+      _temp_classes[idx].name = _temp_classes[idx].name.replace(this.NON_ALPHABETIC, "").toLowerCase();
+    }
+
+    let validKeys : Array<number> = [];
+     _temp_classes.forEach(cls =>  {if(keys.every(key => cls.name.includes(key))){
+      validKeys.push(cls.id);
+    }});
+    this.previewClasses = this.availableClasses.filter(cls => validKeys.includes(cls.id));
+  }
 
   ngOnInit(): void {
     this.store.dispatch(loadClasses());
-    this.store.select(selectAllClasses).subscribe(classes => {this.availableClasses.clear();classes.forEach(cls => this.availableClasses.add(cls))});
+    this.store.select(selectAllClasses).subscribe(classes => { this.availableClasses = classes; this.previewClasses = classes });
   }
 
 

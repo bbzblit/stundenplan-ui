@@ -11,6 +11,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ClassEffect } from './state/class.effect';
 import { classReducer } from './state/class.reducer';
 import { HttpClientModule } from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule,  } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forRoot([ClassEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     HttpClientModule,
+    MatAutocompleteModule,
+    FormsModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

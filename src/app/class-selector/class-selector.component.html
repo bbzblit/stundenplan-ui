@@ -1,2 +1,12 @@
-<h1>All Available Classes</h1>
-<p *ngFor="let cls of availableClasses">{{cls.name}}</p>
+<form>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Number</mat-label>
+        <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text" placeholder="Pick one" aria-label="Number" matInput
+            [matAutocomplete]="auto"> <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let cls of previewClasses" [value]="cls.name">
+                {{cls.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+<h1>Moin Moin</h1>
