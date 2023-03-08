@@ -15,11 +15,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule,  } from '@angular/material/input';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClassSelectorComponent
+    ClassSelectorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,81 @@
+@primary: #3f51b5;
+
+body{
+    height: max-content;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto 1fr;
+    position: absolute;
+    grid-template-areas: header, content, footer;
+}
+
+#root-header{
+    background-color: @primary;
+    height: 4rem;
+    grid-area: header;
+}
+
+#main-content{
+    height: calc(100% - 10rem);
+    grid-area: content;
+}
+#root-footer{
+    grid-area: footer;
+    height: 6rem;
+    position: relative;
+    right: 0;
+    width: 100%;
+    background-color: @primary;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .important-text{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    p{
+        color: #fff;
+    }
+
+}
+
+#footer-links{
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    >a{
+        margin-right: 1rem;
+        color: #fff;
+        text-decoration: none;
+    }
+    >a:hover{
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+
+#copyright{
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    >p{
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+}
+
+#warranty-message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >span{
+        color: #fff;
+        text-align: center;
+    }
+}
