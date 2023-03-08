@@ -22,10 +22,11 @@ export class ClassSelectorComponent implements OnInit {
 
   filterClasses(key: string): void {
     let keys = key.toLowerCase().split(" ");
-
-    for (let idx: number = keys.length; --idx;) {
+   
+    for (let idx: number = keys.length; idx--;) {
       keys[idx] = keys[idx].replace(this.NON_ALPHABETIC, "")
     }
+
     let _temp_classes = [...this.availableClasses];
 
     for (let idx: number = _temp_classes.length - 1; --idx;) {

@@ -1,0 +1,28 @@
+#overview-wrapper{
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: auto;
+    grid-template-areas: "title" "query" "table";
+    height: 100%;
+}
+
+#overview-title{
+    grid-area: "title";
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#filter-values{
+
+    #overview-title();
+
+    grid-area: "query";
+
+    height: 8rem;
+}
+
+#stundenplan{
+    grid-area: "table";
+}

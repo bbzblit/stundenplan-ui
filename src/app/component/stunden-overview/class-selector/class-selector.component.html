@@ -1,7 +1,7 @@
 <form>
-    <mat-form-field class="example-full-width" appearance="fill" id="class-searcher">
+    <mat-form-field  appearance="fill" id="class-searcher">
         <mat-label>School Class</mat-label>
-        <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text" placeholder="Type in your classname" aria-label="Number" matInput
+        <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text" placeholder="Type in your classname" aria-label="Classname" matInput
             [matAutocomplete]="auto"> <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let cls of previewClasses" [value]="cls.name">
                 {{cls.name}}

@@ -16,12 +16,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule,  } from '@angular/material/input';
 import { StundenOverviewComponent } from './component/stunden-overview/stunden-overview.component';
+import { TimetableRootComponent } from './component/timetable-root/timetable-root.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClassSelectorComponent,
     StundenOverviewComponent,
+    TimetableRootComponent,
   ],
   imports: [
     BrowserModule,
