@@ -21,10 +21,10 @@ export class ClassSelectorComponent implements OnInit {
   public previewClasses = new Array<Class>();
 
   filterClasses(key: string): void {
-    let keys = key.split(" ");
+    let keys = key.toLowerCase().split(" ");
 
     for (let idx: number = keys.length; --idx;) {
-      keys[idx] = keys[idx].replace(this.NON_ALPHABETIC, "").toLowerCase();
+      keys[idx] = keys[idx].replace(this.NON_ALPHABETIC, "")
     }
     let _temp_classes = [...this.availableClasses];
 
@@ -32,16 +32,15 @@ export class ClassSelectorComponent implements OnInit {
       _temp_classes[idx] = { ..._temp_classes[idx] };
       _temp_classes[idx].name = _temp_classes[idx].name.replace(this.NON_ALPHABETIC, "").toLowerCase();
     }
-
     let validKeys : Array<number> = [];
      _temp_classes.forEach(cls =>  {if(keys.every(key => cls.name.includes(key))){
       validKeys.push(cls.id);
     }});
     this.previewClasses = this.availableClasses.filter(cls => validKeys.includes(cls.id));
+
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadClasses());
     this.store.select(selectAllClasses).subscribe(classes => { this.availableClasses = classes; this.previewClasses = classes });
   }
 
