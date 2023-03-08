@@ -21,7 +21,14 @@ body{
 #main-content{
     height: calc(100% - 10rem);
     grid-area: content;
+    display: grid;
+    display: flex;
+    
+    *:first-child{
+        position: absolute;
+    }
 }
+
 #root-footer{
     grid-area: footer;
     height: 6rem;
@@ -88,3 +95,4 @@ body{
     margin-left: 1.5rem;
     margin-bottom: 0;
 }
+

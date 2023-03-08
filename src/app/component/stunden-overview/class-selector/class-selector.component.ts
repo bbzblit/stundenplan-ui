@@ -1,9 +1,9 @@
 import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Class } from '../model/class.model';
-import { loadClasses } from '../state/class.action';
-import { selectAllClasses } from '../state/class.selector';
+import { Class } from 'src/app/model/class.model';
+import { loadClasses } from 'src/app/state/class.action';
+import { selectAllClasses } from 'src/app/state/class.selector';
 
 @Component({
   selector: 'app-class-selector',
