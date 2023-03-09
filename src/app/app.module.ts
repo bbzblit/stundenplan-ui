@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule,  } from '@angular/material/input';
 import { StundenOverviewComponent } from './component/stunden-overview/stunden-overview.component';
 import { TimetableRootComponent } from './component/timetable-root/timetable-root.component';
+import { TimetableDayComponent } from './component/timetable-root/timetable-day/timetable-day.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TimetableRootComponent } from './component/timetable-root/timetable-roo
     ClassSelectorComponent,
     StundenOverviewComponent,
     TimetableRootComponent,
+    TimetableDayComponent,
   ],
   imports: [
     BrowserModule,

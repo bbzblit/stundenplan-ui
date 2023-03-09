@@ -1,0 +1,6 @@
+<div class="day-wrapper">
+    <div class="day-title">{{title}}</div>
+    <div class="day-content">
+        <div *ngFor="let hour of [].constructor(12); let idx = index" class="hour"><p *ngIf="showIndex">{{idx + 1}}:00</p></div>
+    </div>
+</div>
