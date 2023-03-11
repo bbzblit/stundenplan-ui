@@ -2,6 +2,7 @@ import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Class } from 'src/app/model/class.model';
+import { loadAppointments } from 'src/app/state/appointment.action';
 import { loadClasses } from 'src/app/state/class.action';
 import { selectAllClasses } from 'src/app/state/class.selector';
 
@@ -46,5 +47,10 @@ export class ClassSelectorComponent implements OnInit {
   }
 
 
+
+  reloadAppointments(id : number){
+
+    this.store.dispatch(loadAppointments({classId : id}));
+  }
 
 }

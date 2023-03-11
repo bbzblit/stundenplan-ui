@@ -19,6 +19,8 @@ import { StundenOverviewComponent } from './component/stunden-overview/stunden-o
 import { TimetableRootComponent } from './component/timetable-root/timetable-root.component';
 import { TimetableDayComponent } from './component/timetable-root/timetable-day/timetable-day.component';
 import { AppointmentComponent } from './component/timetable-root/appointment/appointment.component';
+import { AppointmentEffect } from './state/appointment.effect';
+import { appointmentReducer } from './state/appointment.reducer';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,8 @@ import { AppointmentComponent } from './component/timetable-root/appointment/app
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"classes" : classReducer}, {}),
-    EffectsModule.forRoot([ClassEffect]),
+    StoreModule.forRoot({"classes" : classReducer, "appointments" : appointmentReducer}, {}),
+    EffectsModule.forRoot([ClassEffect, AppointmentEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     HttpClientModule,
     MatAutocompleteModule,

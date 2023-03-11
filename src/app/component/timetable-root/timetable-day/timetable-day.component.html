@@ -5,9 +5,12 @@
             *ngFor="let hour of [].constructor(end - start + 1); let idx = index" class="hour">
             <p class="day-time" *ngIf="showIndex">{{idx + start}}:00</p>
         </div>
-        <app-appointment class="appointment-wrapper" *ngFor="let appointment of appointments" [appointment]="appointment"
-        [style.height]="hourPercent * (appointment.appointment_end.getHours() - appointment.appointment_start.getHours() - 1) + hourPercent / 60 * ((60 - appointment.appointment_start.getMinutes()) + appointment.appointment_end.getMinutes())  + '%'" 
-        [style.top]="  hourPercent * (appointment.appointment_start.getHours() - start) + (hourPercent / 60 * (appointment.appointment_start.getMinutes()) ) + '%'"></app-appointment>
+        <app-appointment class="appointment-wrapper" *ngFor="let appointment of appointments"
+            [appointment]="appointment"
+            [style.height]="hourPercent * (appointment.appointment_end.getHours() - appointment.appointment_start.getHours() - 1)
+             + hourPercent / 60 * ((60 - appointment.appointment_start.getMinutes()) + appointment.appointment_end.getMinutes())  + '%'"
+            [style.top]="  hourPercent * (appointment.appointment_start.getHours() - start) 
+            + (hourPercent / 60 * (appointment.appointment_start.getMinutes()) ) + '%'"></app-appointment>
 
     </div>
 </div>
