@@ -11,14 +11,15 @@
 
     <div id="table-scroll">
         <div id="table-content">
-            <app-timetable-day [appointments]="testAppointments" [showIndex]="true" [title]="'Monday 12.03'"
-                class="day show-index"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
-            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="testAppointments" [showIndex]="true"
+                [title]="'Monday 12.03'" class="day show-index"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+            <app-timetable-day [start]="startTime" [end]="endTime" class="day"></app-timetable-day>
+
         </div>
     </div>
 </div>

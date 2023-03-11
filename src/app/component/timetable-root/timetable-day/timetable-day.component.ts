@@ -14,4 +14,8 @@ export class TimetableDayComponent {
 
   @Input("showIndex") public showIndex : boolean = false;
 
+  @Input("start") public start : number = 7;
+  @Input("end") public end : number = 19;
+  
+
 }

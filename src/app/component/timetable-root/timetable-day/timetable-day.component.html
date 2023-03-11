@@ -1,8 +1,8 @@
 <div class="day-wrapper">
     <div style="height: 15px;" class="buffer"></div>
     <div class="day-content">
-        <div [ngClass]="{'extendet-hour' : showIndex}" *ngFor="let hour of [].constructor(13); let idx = index" class="hour">
-            <p class="day-time" *ngIf="showIndex">{{idx + 7}}:00</p>
+        <div [ngClass]="{'extendet-hour' : showIndex}" *ngFor="let hour of [].constructor(end - start + 1); let idx = index" class="hour">
+            <p class="day-time" *ngIf="showIndex">{{idx + start}}:00</p>
         </div>
 <!--
         <app-appointment *ngFor="let appointment of appointments" [appointment]="appointment"
