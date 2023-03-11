@@ -18,6 +18,7 @@ import { MatInputModule,  } from '@angular/material/input';
 import { StundenOverviewComponent } from './component/stunden-overview/stunden-overview.component';
 import { TimetableRootComponent } from './component/timetable-root/timetable-root.component';
 import { TimetableDayComponent } from './component/timetable-root/timetable-day/timetable-day.component';
+import { AppointmentComponent } from './component/timetable-root/appointment/appointment.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TimetableDayComponent } from './component/timetable-root/timetable-day/
     StundenOverviewComponent,
     TimetableRootComponent,
     TimetableDayComponent,
+    AppointmentComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,24 @@
 <div id="timetable-wrapper">
-    <app-timetable-day [showIndex]="true" [title]="'Monday 12.03'" class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
-    <app-timetable-day class="day"></app-timetable-day>
+    <div id="table-title">
+        <p>Monday 14.03</p>
+        <p>REMOVE IN PROD</p>
+        <p>REMOVE IN PROD</p>
+        <p>REMOVE IN PROD</p>
+        <p>REMOVE IN PROD</p>
+        <p>REMOVE IN PROD</p>
+        <p>REMOVE IN PROD</p>
+    </div>
 
+    <div id="table-scroll">
+        <div id="table-content">
+            <app-timetable-day [appointments]="testAppointments" [showIndex]="true" [title]="'Monday 12.03'"
+                class="day show-index"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+            <app-timetable-day class="day"></app-timetable-day>
+        </div>
+    </div>
 </div>

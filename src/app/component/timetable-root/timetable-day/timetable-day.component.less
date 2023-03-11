@@ -1,26 +1,13 @@
 .day-wrapper{
     height: 100%;
     width: 100%;
-    display: grid;
-    grid-template-rows: 10% 90%;
-    grid-template-columns: 1fr;
-    grid-template-areas: "day-title" "day-content";
 }
-
-.day-title{
-    width: 100%;
-    padding-top: 4%;
-    grid-area: "day-title";
-    text-align: center;
-}
-
 .day-content{
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    grid-area: "day-content";
-    height: 100%;
+    height: calc(100% - 15px);
 }
 
 .hour{
@@ -29,9 +16,20 @@
     width: 100%;
 
     p{
-        top: -2ch;
+        top: -1ch;
+        left: -6ch;
+        z-index: 1000;
         padding-left: .2rem;
         display: block;
         position: relative;
     }
+}
+
+.extendet-hour
+
+
+.appointment{
+    position: absolute;
+    width: 100%;
+    right: 0;
 }

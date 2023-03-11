@@ -1,21 +1,50 @@
-.day{
-    height: 90%;
+.day {
+    height: 100%;
     width: 14%;
-    margin-bottom: 5rem;
     display: block;
-    
-    &:not(:nth-child(2n)){
+
+    &:not(:nth-child(2n)) {
         background-color: #DCDCDC;
     }
 }
 
+#timetable-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
 
-#timetable-wrapper{
+#table-content,
+#table-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: inherit;
     margin-right: 3rem;
     margin-left: 3rem;
+    height: 80rem;
+    padding-left: 3rem;
 }
 
+#table-scroll {
+    max-height: 90%;
+    position: relative;
+    overflow-x: scroll;
+}
+
+
+#table-title {
+    height: 10%;
+    margin-left: 6rem;
+    padding-left: 0;
+    p {
+        width: 14%;
+        margin: 0;
+        text-align: center;
+        height: 100%;
+        &:not(:nth-child(2n)) {
+            background-color: #DCDCDC;
+        }
+    }
+
+}

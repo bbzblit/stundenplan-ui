@@ -1,8 +1,8 @@
 #overview-wrapper{
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto 1fr 1rem;
     grid-template-columns: auto;
-    grid-template-areas: "title" "query" "table";
+    grid-template-areas: "title" "query" "table" "buffer";
     height: 100%;
 }
 
@@ -41,6 +41,10 @@
 
 #stundenplan{
     grid-area: "table";
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+    margin-right: 3rem;
 }
 
 #timetable{

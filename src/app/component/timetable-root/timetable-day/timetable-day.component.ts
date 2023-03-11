@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Appointment } from 'src/app/model/appointment.model';
 
 @Component({
   selector: 'app-timetable-day',
@@ -8,6 +9,8 @@ import { Component, Input } from '@angular/core';
 export class TimetableDayComponent {
 
   @Input("title") public title : string = "REMOVE IN PROD";
+
+  @Input("appointments") appointments: Array<Appointment> = [];
 
   @Input("showIndex") public showIndex : boolean = false;
 
