@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/model/appointment.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Appointment } from 'src/app/model/appointment.model';
   templateUrl: './timetable-day.component.html',
   styleUrls: ['./timetable-day.component.less']
 })
-export class TimetableDayComponent {
+export class TimetableDayComponent implements OnInit{
 
   @Input("title") public title : string = "REMOVE IN PROD";
 
@@ -17,5 +17,11 @@ export class TimetableDayComponent {
   @Input("start") public start : number = 7;
   @Input("end") public end : number = 19;
   
+
+  public hourPercent! : number;
+
+  ngOnInit(){
+    this.hourPercent = 100 / (this.end - this.start); 
+  }
 
 }
