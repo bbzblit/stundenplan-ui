@@ -1,31 +1,12 @@
 <div id="timetable-wrapper">
     <div id="table-title">
-        <p>Monday 14.03</p>
-        <p>REMOVE IN PROD</p>
-        <p>REMOVE IN PROD</p>
-        <p>REMOVE IN PROD</p>
-        <p>REMOVE IN PROD</p>
-        <p>REMOVE IN PROD</p>
-        <p>REMOVE IN PROD</p>
+        <p *ngFor="let day of days; let idx = index">{{getDate(idx)}}</p>
     </div>
 
     <div id="table-scroll">
         <div id="table-content">
 
-            <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[0]" [showIndex]="true"
-                [title]="getDate(0)" class="day show-index"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[1]" 
-                [title]="getDate(1)" class="day"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[2]" 
-                [title]="getDate(2)" class="day"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[3]" 
-                [title]="getDate(3)" class="day"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[4]" 
-                [title]="getDate(4)" class="day"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[5]" 
-                [title]="getDate(5)" class="day"></app-timetable-day>
-                <app-timetable-day [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[6]" 
-                [title]="getDate(6)" class="day"></app-timetable-day>
+            <app-timetable-day *ngFor="let day of days; let idx = index" [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day show-index"></app-timetable-day>
         </div>
     </div>
 </div>

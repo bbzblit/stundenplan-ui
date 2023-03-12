@@ -8,8 +8,6 @@ import { Appointment } from 'src/app/model/appointment.model';
 })
 export class TimetableDayComponent implements OnInit{
 
-  @Input("title") public title : string = "REMOVE IN PROD";
-
   @Input("appointments") appointments: Array<Appointment> = [];
 
   @Input("showIndex") public showIndex : boolean = false;

@@ -18,8 +18,8 @@ export class TimetableRootComponent implements OnInit{
   public days = Array(7);
   public groupedAppointments : Array<Array<Appointment>> = [];
   public testAppointments: Array<Appointment> = [{ appointment_end: new Date("2023-03-10 16:25:00"), appointment_start: new Date("2023-03-10 15:40:00"), class_id: 3259168, id: 2410, place: "L-Zimmer 104", summary: "Lehrperson: Dietrich J\ufffdrg\\nKlasse: AMM 19-23", title: "Allgemeinbildung" }]
-  public startDate = new Date("2023-01-27 00:00:00");
-
+  private startDate = new Date();
+  private dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   public loadAppointments(appointments : Array<Appointment>, start : Date){
     
     let day = -1;
@@ -37,8 +37,13 @@ export class TimetableRootComponent implements OnInit{
   }
 
   constructor(private store : Store){
+    this.startDate.setDate(this.startDate.getDate() + (1 + 7 - this.startDate.getDay()) % 7);
+    this.startDate.setHours(0,0,0,0);
     this.groupedAppointments.length = 7;
-    this.store.select(selectAppointmentsOfWeek({start : this.startDate, end : new Date("2023-02-04 00:00:00")})).subscribe(appointments => {console.log(appointments);this.loadAppointments(appointments, this.startDate)});
+    let _end_date = new Date(this.startDate.getTime());
+    _end_date.setDate(_end_date.getDate() + 7);
+    
+    this.store.select(selectAppointmentsOfWeek({start : this.startDate, end : _end_date })).subscribe(appointments => {console.log(appointments);this.loadAppointments(appointments, new Date(this.startDate.getTime()))});
   }
 
   ngOnInit(): void {
@@ -49,6 +54,6 @@ export class TimetableRootComponent implements OnInit{
   getDate(div : number){
     let _tmp_date = new Date(this.startDate.getTime());
     _tmp_date.setDate(_tmp_date.getDate() + div);
-    return _tmp_date.toLocaleDateString();
+    return this.dayNames[_tmp_date.getDay()] + " " + _tmp_date.getDate() + "." + _tmp_date.getMonth();
   }
 }
