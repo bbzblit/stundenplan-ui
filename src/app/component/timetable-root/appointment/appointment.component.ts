@@ -8,6 +8,11 @@ import { Appointment } from 'src/app/model/appointment.model';
 })
 export class AppointmentComponent {
 
-  @Input("appointment") public appointment! : Appointment;
+  @Input("appointment") public appointment!: Appointment;
+
+  pad(n: number) {
+    return (n < 10) ? '0' + n : n.toString();
+  }
+
 
 }
