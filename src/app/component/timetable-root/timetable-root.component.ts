@@ -1,7 +1,9 @@
+import { ListKeyManager } from '@angular/cdk/a11y';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appointment } from 'src/app/model/appointment.model';
 import { Notification } from 'src/app/model/notification.model';
+import { selectAppointmentsOfWeek } from 'src/app/state/appointment.selector';
 
 @Component({
   selector: 'app-timetable-root',
@@ -13,13 +15,40 @@ export class TimetableRootComponent implements OnInit{
 
   public startTime = 7;
   public endTime = 19;
-
+  public days = Array(7);
+  public groupedAppointments : Array<Array<Appointment>> = [];
   public testAppointments: Array<Appointment> = [{ appointment_end: new Date("2023-03-10 16:25:00"), appointment_start: new Date("2023-03-10 15:40:00"), class_id: 3259168, id: 2410, place: "L-Zimmer 104", summary: "Lehrperson: Dietrich J\ufffdrg\\nKlasse: AMM 19-23", title: "Allgemeinbildung" }]
+  public startDate = new Date("2023-01-27 00:00:00");
 
-  constructor(private store : Store){}
+  public loadAppointments(appointments : Array<Appointment>, start : Date){
+    
+    let day = -1;
+
+    let modefiedAppointments : Array<Appointment> = [];
+    appointments.forEach(appointment => {appointment = {...appointment};appointment.appointment_end = new Date(appointment.appointment_end);appointment.appointment_start = new Date(appointment.appointment_start); modefiedAppointments.push(appointment)})
+
+    appointments = modefiedAppointments;
+
+    while(day++ < 6){
+      this.groupedAppointments[day] = appointments.filter(appointment => appointment.appointment_start.getDay() == start.getDay());
+      start.setDate(start.getDate() + 1);
+    }
+    console.log(this.groupedAppointments);
+  }
+
+  constructor(private store : Store){
+    this.groupedAppointments.length = 7;
+    this.store.select(selectAppointmentsOfWeek({start : this.startDate, end : new Date("2023-02-04 00:00:00")})).subscribe(appointments => {console.log(appointments);this.loadAppointments(appointments, this.startDate)});
+  }
 
   ngOnInit(): void {
 
     
+  }
+
+  getDate(div : number){
+    let _tmp_date = new Date(this.startDate.getTime());
+    _tmp_date.setDate(_tmp_date.getDate() + div);
+    return _tmp_date.toLocaleDateString();
   }
 }
