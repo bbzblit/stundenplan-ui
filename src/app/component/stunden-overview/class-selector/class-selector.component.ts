@@ -17,13 +17,12 @@ export class ClassSelectorComponent implements OnInit {
   constructor(private store: Store) { };
 
   private NON_ALPHABETIC = /[^A-Za-z0-9]/g;
-
   private availableClasses = new Array<Class>();
   public previewClasses = new Array<Class>();
 
   filterClasses(key: string): void {
     let keys = key.toLowerCase().split(" ");
-   
+
     for (let idx: number = keys.length; idx--;) {
       keys[idx] = keys[idx].replace(this.NON_ALPHABETIC, "")
     }
@@ -34,10 +33,12 @@ export class ClassSelectorComponent implements OnInit {
       _temp_classes[idx] = { ..._temp_classes[idx] };
       _temp_classes[idx].name = _temp_classes[idx].name.replace(this.NON_ALPHABETIC, "").toLowerCase();
     }
-    let validKeys : Array<number> = [];
-     _temp_classes.forEach(cls =>  {if(keys.every(key => cls.name.includes(key))){
-      validKeys.push(cls.id);
-    }});
+    let validKeys: Array<number> = [];
+    _temp_classes.forEach(cls => {
+      if (keys.every(key => cls.name.includes(key))) {
+        validKeys.push(cls.id);
+      }
+    });
     this.previewClasses = this.availableClasses.filter(cls => validKeys.includes(cls.id));
 
   }
@@ -48,9 +49,11 @@ export class ClassSelectorComponent implements OnInit {
 
 
 
-  reloadAppointments(id : number){
-
-    this.store.dispatch(loadAppointments({classId : id}));
+  reloadAppointments(id: number, event : any) {
+    if (!event.isUserInput) {
+      return;
+    }
+    this.store.dispatch(loadAppointments({ classId: id }));
   }
 
 }

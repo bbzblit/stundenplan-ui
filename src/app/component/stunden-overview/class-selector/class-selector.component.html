@@ -3,7 +3,7 @@
         <mat-label>School Class</mat-label>
         <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text" placeholder="Type in your classname" aria-label="Classname" matInput
             [matAutocomplete]="auto"> <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="reloadAppointments(cls.id)" [value]="cls.name">
+            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="reloadAppointments(cls.id, $event)" [value]="cls.name">
                 {{cls.name}}
             </mat-option>
         </mat-autocomplete>
