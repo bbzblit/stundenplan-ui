@@ -1,9 +1,15 @@
 <form>
-    <mat-form-field  appearance="fill" id="class-searcher">
+    <mat-form-field appearance="fill" id="class-searcher">
         <mat-label>School Class</mat-label>
-        <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text" placeholder="Type in your classname" aria-label="Classname" matInput
-            [matAutocomplete]="auto"> <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="reloadAppointments(cls.id, $event)" [value]="cls.name">
+        <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text"
+            placeholder="Type in your classname" aria-label="Classname" matInput [matAutocomplete]="auto">
+        <button (click)="selectedClass.value = '';clearAppointment()" [disableRipple]="true" id="class-clear-button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon id="class-clear-icon">clear</mat-icon>
+        </button>
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="reloadAppointments(cls.id, $event)"
+                [value]="cls.name">
                 {{cls.name}}
             </mat-option>
         </mat-autocomplete>

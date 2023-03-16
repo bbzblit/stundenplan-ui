@@ -21,6 +21,7 @@ import { TimetableDayComponent } from './component/timetable-root/timetable-day/
 import { AppointmentComponent } from './component/timetable-root/appointment/appointment.component';
 import { AppointmentEffect } from './state/appointment.effect';
 import { appointmentReducer } from './state/appointment.reducer';
+import {MatIconModule} from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { appointmentReducer } from './state/appointment.reducer';
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
