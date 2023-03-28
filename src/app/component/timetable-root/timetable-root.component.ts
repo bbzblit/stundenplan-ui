@@ -33,17 +33,15 @@ export class TimetableRootComponent implements OnInit {
       this.groupedAppointments[day] = appointments.filter(appointment => appointment.appointment_start.getDay() == start.getDay());
       start.setDate(start.getDate() + 1);
     }
-    console.log(this.groupedAppointments);
   }
 
   constructor(private store: Store) {
-    this.startDate.setDate(this.startDate.getDate() + (1 + 7 - this.startDate.getDay()) % 7);
+    this.startDate.setDate(this.startDate.getDate() + (1 - this.startDate.getDay()) % 7);
     this.startDate.setHours(0, 0, 0, 0);
     this.groupedAppointments.length = 7;
     let _end_date = new Date(this.startDate.getTime());
     _end_date.setDate(_end_date.getDate() + 7);
-
-    this.store.select(selectAppointmentsOfWeek({ start: this.startDate, end: _end_date })).subscribe(appointments => { console.log(appointments); this.loadAppointments(appointments, new Date(this.startDate.getTime())) });
+    this.store.select(selectAppointmentsOfWeek({ start: this.startDate, end: _end_date })).subscribe(appointments => this.loadAppointments(appointments, new Date(this.startDate.getTime())));
   }
 
   ngOnInit(): void {
