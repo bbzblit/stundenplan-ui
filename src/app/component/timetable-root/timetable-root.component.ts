@@ -49,9 +49,14 @@ export class TimetableRootComponent implements OnInit {
 
   }
 
+  getDayName(div : number){
+    let _tmp_date = new Date(this.startDate.getTime());
+    _tmp_date.setDate(_tmp_date.getDate() + div);
+    return this.dayNames[_tmp_date.getDay()];
+  }
   getDate(div: number) {
     let _tmp_date = new Date(this.startDate.getTime());
     _tmp_date.setDate(_tmp_date.getDate() + div);
-    return this.dayNames[_tmp_date.getDay()] + " " + _tmp_date.getDate() + "." + _tmp_date.getMonth();
+    return _tmp_date.getDate() + "." + _tmp_date.getMonth();
   }
 }
