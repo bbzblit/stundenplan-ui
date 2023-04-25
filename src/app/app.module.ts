@@ -21,7 +21,10 @@ import { TimetableDayComponent } from './component/timetable-root/timetable-day/
 import { AppointmentComponent } from './component/timetable-root/appointment/appointment.component';
 import { AppointmentEffect } from './state/appointment.effect';
 import { appointmentReducer } from './state/appointment.reducer';
-import {MatIconModule} from '@angular/material/icon'; 
+import {MatIconModule} from '@angular/material/icon';
+import { DaypickerComponent } from './component/stunden-overview/daypicker/daypicker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {MatIconModule} from '@angular/material/icon';
     TimetableRootComponent,
     TimetableDayComponent,
     AppointmentComponent,
+    DaypickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

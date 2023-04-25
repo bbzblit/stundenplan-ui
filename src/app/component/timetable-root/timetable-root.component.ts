@@ -1,5 +1,5 @@
 import { ListKeyManager } from '@angular/cdk/a11y';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appointment } from 'src/app/model/appointment.model';
 import { Notification } from 'src/app/model/notification.model';
@@ -10,7 +10,7 @@ import { selectAppointmentsOfWeek } from 'src/app/state/appointment.selector';
   templateUrl: './timetable-root.component.html',
   styleUrls: ['./timetable-root.component.less']
 })
-export class TimetableRootComponent implements OnInit {
+export class TimetableRootComponent implements OnInit, AfterContentInit {
 
 
   public startTime = 7;
@@ -19,8 +19,10 @@ export class TimetableRootComponent implements OnInit {
   public groupedAppointments: Array<Array<Appointment>> = [];
   private startDate = new Date();
   private dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  public loadAppointments(appointments: Array<Appointment>, start: Date) {
+  private now = new Date();
 
+
+  public loadAppointments(appointments: Array<Appointment>, start: Date) {
 
     let day = -1;
 
@@ -44,9 +46,16 @@ export class TimetableRootComponent implements OnInit {
     this.store.select(selectAppointmentsOfWeek({ start: this.startDate, end: _end_date })).subscribe(appointments => this.loadAppointments(appointments, new Date(this.startDate.getTime())));
   }
 
+  ngAfterContentInit(): void {
+    let callendarScroll =  document.getElementById("table-scroll")
+    if(!callendarScroll){
+      return;
+    }
+    callendarScroll.scrollTop = 1280/12 * (this.startTime - this.now.getHours());
+  }
+
   ngOnInit(): void {
-
-
+    
   }
 
   getDayName(div : number){

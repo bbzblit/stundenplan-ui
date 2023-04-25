@@ -1,9 +1,9 @@
-<form>
+<form id="class-selector-from">
     <mat-form-field appearance="fill" id="class-searcher">
         <mat-label>School Class</mat-label>
         <input (input)="filterClasses(selectedClass.value)" #selectedClass type="text"
             placeholder="Type in your classname" aria-label="Classname" matInput [matAutocomplete]="auto">
-        <button (click)="selectedClass.value = '';clearAppointment()" [disableRipple]="true" id="class-clear-button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <button *ngIf="selectedClass.value" (click)="selectedClass.value = '';clearAppointment()" [disableRipple]="true" id="class-clear-button" mat-icon-button>
             <mat-icon id="class-clear-icon">clear</mat-icon>
         </button>
 
