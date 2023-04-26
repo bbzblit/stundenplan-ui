@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
-import { ClassService } from "../services/class.service";
+import { ClassService } from "src/app/services/class.service";
+import { addNotification } from "../error.action";
 import { loadClasses, loadClassesSuccess } from "./class.action";
-import { addNotification } from "./error.action";
 
 @Injectable()
 export class ClassEffect {

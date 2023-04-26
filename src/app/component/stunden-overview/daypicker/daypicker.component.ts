@@ -9,7 +9,7 @@ import {
 } from '@angular/material/datepicker';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setDate } from 'src/app/state/date.action';
+import { setDate } from 'src/app/state/date/date.action';
 
 @Injectable()
 export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<string> {

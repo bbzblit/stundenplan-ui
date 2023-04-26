@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { Class } from "../model/class.model";
+import { Class } from "src/app/model/class.model";
 import { loadClassesSuccess } from "./class.action";
 
 const INITIAL_STATE: Array<Class> = [];

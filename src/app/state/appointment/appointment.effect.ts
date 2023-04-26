@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
-import { AppointmentService } from "../services/appointment.service";
+import { AppointmentService } from "src/app/services/appointment.service";
+import { addNotification } from "../error.action";
 import { loadAppointments, loadAppointmentsSuccess } from "./appointment.action";
-import { addNotification } from "./error.action";
 
 @Injectable()
 export class AppointmentEffect {

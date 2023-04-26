@@ -1,8 +1,7 @@
 import { Portal } from "@angular/cdk/portal";
 import {  createFeatureSelector, createSelector } from "@ngrx/store";
 import { startWith } from "rxjs";
-import { Appointment } from "../model/appointment.model";
-import { Class } from "../model/class.model";
+import { Appointment } from "src/app/model/appointment.model";
 
 
 export const selectAppointments = createFeatureSelector<Array<Appointment>>("appointments");

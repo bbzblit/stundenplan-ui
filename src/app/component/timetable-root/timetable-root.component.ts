@@ -3,8 +3,8 @@ import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appointment } from 'src/app/model/appointment.model';
 import { Notification } from 'src/app/model/notification.model';
-import { selectAppointmentsOfWeek } from 'src/app/state/appointment.selector';
-import { selectDate } from 'src/app/state/date.selector';
+import { selectAppointmentsOfWeek } from 'src/app/state/appointment/appointment.selector';
+import { selectDate } from 'src/app/state/date/date.selector';
 
 @Component({
   selector: 'app-timetable-root',

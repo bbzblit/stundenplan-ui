@@ -2,8 +2,8 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadClasses } from 'src/app/state/class.action';
-import { selectDate } from 'src/app/state/date.selector';
+import { loadClasses } from 'src/app/state/class/class.action';
+import { selectDate } from 'src/app/state/date/date.selector';
 
 @Component({
   selector: 'app-stunden-overview',

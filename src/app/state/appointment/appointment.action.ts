@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Appointment } from "../model/appointment.model";
+import { Appointment } from "../../model/appointment.model";
 
 
 
