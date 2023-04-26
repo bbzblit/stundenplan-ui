@@ -1,6 +1,6 @@
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
-import { DateAdapter } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import {
   MatDateRangeSelectionStrategy,
@@ -44,6 +44,7 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
       provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
       useClass: WeekSelectorStrategy,
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'de-De' }
   ],
 })
 export class DaypickerComponent {
