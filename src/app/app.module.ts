@@ -25,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { DaypickerComponent } from './component/stunden-overview/daypicker/daypicker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
+import { dateReducer } from './state/date.reducer';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"classes" : classReducer, "appointments" : appointmentReducer}, {}),
+    StoreModule.forRoot({"classes" : classReducer, "appointments" : appointmentReducer, "date" : dateReducer}, {}),
     EffectsModule.forRoot([ClassEffect, AppointmentEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     HttpClientModule,

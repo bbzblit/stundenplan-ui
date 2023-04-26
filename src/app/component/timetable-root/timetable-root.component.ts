@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Appointment } from 'src/app/model/appointment.model';
 import { Notification } from 'src/app/model/notification.model';
 import { selectAppointmentsOfWeek } from 'src/app/state/appointment.selector';
+import { selectDate } from 'src/app/state/date.selector';
 
 @Component({
   selector: 'app-timetable-root',
@@ -37,13 +38,19 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
     }
   }
 
-  constructor(private store: Store) {
+  loadAttachmentsOfWeek(){
     this.startDate.setDate(this.startDate.getDate() + (1 - this.startDate.getDay()) % 7);
     this.startDate.setHours(0, 0, 0, 0);
     this.groupedAppointments.length = 7;
     let _end_date = new Date(this.startDate.getTime());
     _end_date.setDate(_end_date.getDate() + 7);
     this.store.select(selectAppointmentsOfWeek({ start: this.startDate, end: _end_date })).subscribe(appointments => this.loadAppointments(appointments, new Date(this.startDate.getTime())));
+
+  }
+
+  constructor(private store: Store) {
+    this.loadAttachmentsOfWeek();
+    this.store.select(selectDate).subscribe((date) => {this.startDate = date; this.loadAttachmentsOfWeek()});
   }
 
   ngAfterContentInit(): void {

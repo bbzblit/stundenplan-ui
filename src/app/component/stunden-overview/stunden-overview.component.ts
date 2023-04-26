@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadClasses } from 'src/app/state/class.action';
+import { selectDate } from 'src/app/state/date.selector';
 
 @Component({
   selector: 'app-stunden-overview',
@@ -15,12 +16,22 @@ export class StundenOverviewComponent implements OnInit {
 
   constructor(private store: Store, private route: ActivatedRoute) { }
 
+  getMonday(date : Date): Date{
+      let weekDay = date.getDay();
+      date.setDate(date.getDate() - weekDay + (!weekDay ? -6 : 1));
+      return date;
+    }
+
   ngOnInit(): void {
     this.store.dispatch(loadClasses());
-    this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(new Date(), "yyyy-MM", "en-US");
+    
+    this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
 
-    if(!this.DATE.match(/2\d{3}-(0[1-9]|1[0-2])/)){
-      this.DATE = formatDate(new Date(), "yyyy-MM", "en-US");
+    this.store.select(selectDate).subscribe((date) => this.DATE = formatDate(this.getMonday(date), "dd-MM-yyyy", "en-US") );
+    
+    console.log(this.DATE);
+    if(!this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)){
+      this.DATE = formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
     }
   }
 };

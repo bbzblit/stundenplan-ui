@@ -7,6 +7,9 @@ import {
   DateRange,
   MAT_DATE_RANGE_SELECTION_STRATEGY,
 } from '@angular/material/datepicker';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setDate } from 'src/app/state/date.action';
 
 @Injectable()
 export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<string> {
@@ -24,7 +27,7 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
   private _createFiveDayRange(date: string | null): DateRange<any> {
     let d = new Date();
     if (date) {
-      let d = new Date(date)
+      d = new Date(date)
     }
     let weekDay = d.getDay();
     let diff = d.getDate() - weekDay + (!weekDay ? -6 : 1);
@@ -45,12 +48,21 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
 })
 export class DaypickerComponent {
 
-  now(days : number): string{
-    let date = new Date();
-    let weekDay = date.getDay();
-    date.setDate(date.getDate() - weekDay + (!weekDay ? -6 : 1));
-    date.setDate(date.getDate() + days);
-    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+  constructor(private route : ActivatedRoute, private router : Router, private store : Store){}
+
+  setStartDate(input : any){
+    let date = new Date(input["value"]);
+    console.log(date);
+
+    let strDate : string = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    this.store.dispatch(setDate({date : date}));
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.route,
+        queryParams: { period: strDate },
+        queryParamsHandling: 'merge'
+      });
   }
 
 }
