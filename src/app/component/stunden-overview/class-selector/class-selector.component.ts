@@ -18,7 +18,7 @@ export class ClassSelectorComponent implements OnInit {
   private NON_ALPHABETIC = /[^A-Za-z0-9]/g;
   private availableClasses = new Array<Class>();
   public previewClasses = new Array<Class>();
-
+  public defaultClass : Class = {id : -1, name : ""};
   filterClasses(key: string): void {
     let keys = key.toLowerCase().split(" ");
 
@@ -42,8 +42,23 @@ export class ClassSelectorComponent implements OnInit {
 
   }
 
+  loadDefaultClass(): void{
+    let storageId = localStorage.getItem("classId")
+    if(storageId == null){
+      return;
+    }
+    let targetId = +storageId;
+    this.availableClasses.forEach(
+      cls => {
+        if(cls.id === targetId){
+          this.defaultClass = cls;
+          this.reloadAppointments(cls.id, null);
+        }
+      }
+    )
+  }
   ngOnInit(): void {
-    this.store.select(selectAllClasses).subscribe(classes => { this.availableClasses = classes; this.previewClasses = classes });
+    this.store.select(selectAllClasses).subscribe(classes => {this.availableClasses = classes; this.loadDefaultClass() ;this.previewClasses = classes });
   }
 
   clearAppointment(){
@@ -51,10 +66,11 @@ export class ClassSelectorComponent implements OnInit {
   }
 
 
-  reloadAppointments(id: number, event : any) {
-    if (!event.isUserInput) {
+  reloadAppointments(id: number, event : any | null) {
+    if (event != null && !event.isUserInput) {
       return;
     }
+    localStorage.setItem("classId", id + "");
     this.store.dispatch(loadAppointments({ classId: id }));
   }
 
