@@ -1,0 +1,12 @@
+<div id="detailed-view-wrapper">
+    <h1>Event Overview</h1>
+    <p>Title: {{appointment.title}}</p>
+    <p>Start: {{appointment.appointment_start | date: "EEEE hh:mm"}}</p>
+    <p>End: {{appointment.appointment_end | date: "EEEE hh:mm" }}</p>
+    <p>Location: {{appointment.place}}</p>
+    <p>Summary: {{wrapLine(appointment.summary)}}</p>
+
+    <mat-dialog-actions id="detailed-view-actions">
+        <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>

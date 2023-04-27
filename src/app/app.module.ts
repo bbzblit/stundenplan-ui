@@ -26,6 +26,8 @@ import { appointmentReducer } from './state/appointment/appointment.reducer';
 import { dateReducer } from './state/date/date.reducer';
 import { ClassEffect } from './state/class/class.effect';
 import { classReducer } from './state/class/class.reducer';
+import { DetailedEventViewComponent } from './component/timetable-root/appointment/detailed-event-view/detailed-event-view.component';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 @NgModule({
   declarations: [
@@ -34,8 +36,9 @@ import { classReducer } from './state/class/class.reducer';
     StundenOverviewComponent,
     TimetableRootComponent,
     TimetableDayComponent,
-    AppointmentComponent,
     DaypickerComponent,
+    AppointmentComponent,
+    DetailedEventViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { classReducer } from './state/class/class.reducer';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
