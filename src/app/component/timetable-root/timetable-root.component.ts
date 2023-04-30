@@ -18,7 +18,7 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
   public endTime = 19;
   public days = Array(7);
   public groupedAppointments: Array<Array<Appointment>> = [];
-  private startDate = new Date();
+  public startDate = new Date();
   private dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   private now = new Date();
 
