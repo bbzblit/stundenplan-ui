@@ -1,0 +1,17 @@
+<div id="mobile-wrapper">
+    <div class="mobile-day" *ngFor="let day of days; let div = index">
+        <h1 class="mobike-day-title">
+            {{getDayName(div)}}
+        </h1>
+        <h2 id="calendar-day">
+            {{getDate(div)}}
+        </h2>
+        <div id="mobile-day-line"></div>
+        <div *ngFor="let appointment of groupedAppointments[div] ">
+            <app-appointment class="mobile-appointment" [appointment]="appointment"></app-appointment>
+        </div>
+    </div>
+</div>
+<div id="mobile-eol">
+
+</div>
