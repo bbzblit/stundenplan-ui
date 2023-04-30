@@ -59,3 +59,26 @@
     height: 100%;
     margin: 0;
 }
+
+@media only screen and (max-width: 1000px){
+    #timetable{
+        display: none;
+    }
+    #class-selector{
+        width: 80%;
+    }
+    #filter-values{
+        grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    }
+    #daypicker, 
+    #class-selector {
+        margin: 0 !important;
+        width: 100%;
+    }
+    #daypicker{
+        display: flex;
+        justify-content: center;
+
+    }
+} 
