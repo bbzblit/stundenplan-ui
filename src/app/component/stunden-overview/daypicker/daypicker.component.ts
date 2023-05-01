@@ -44,12 +44,14 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
       provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
       useClass: WeekSelectorStrategy,
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'de-De' }
+    { provide: MAT_DATE_LOCALE, useValue: 'de-CH' }
   ],
 })
 export class DaypickerComponent {
 
-  constructor(private route : ActivatedRoute, private router : Router, private store : Store){}
+  constructor(private route : ActivatedRoute, private router : Router, private store : Store, private dateAdapter: DateAdapter<Date>){
+    this.dateAdapter.setLocale("de-CH");
+  }
 
   setStartDate(input : any){
     let date = new Date(input["value"]);
