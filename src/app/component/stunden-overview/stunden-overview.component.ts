@@ -17,31 +17,31 @@ export class StundenOverviewComponent implements OnInit {
 
   constructor(private store: Store, private route: ActivatedRoute) { }
 
-  getMonday(date : Date): Date{
-      let weekDay = date.getDay();
-      date.setDate(date.getDate() - weekDay + (!weekDay ? -6 : 1));
-      return date;
-    }
+  getMonday(date: Date): Date {
+    let weekDay = date.getDay();
+    date.setDate(date.getDate() - weekDay + (!weekDay ? -6 : 1));
+    return date;
+  }
 
-  private stringToDate(date: String) : Date{
+  private stringToDate(date: String): Date {
     let dateArr = date.split("-");
     let newDate = new Date();
 
     newDate.setDate(+dateArr[0]);
     newDate.setMonth(+dateArr[1] - 1);
     newDate.setFullYear(+dateArr[2]);
-    
+
     return newDate;
   }
   ngOnInit(): void {
     this.store.dispatch(loadClasses());
-    
+
     this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
-    if(this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)){
-      this.store.dispatch(setDate({date : this.stringToDate(this.DATE)})); 
+    if (this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)) {
+      this.store.dispatch(setDate({ date: this.stringToDate(this.DATE) }));
     }
-    this.store.select(selectDate).subscribe((date) => this.DATE = formatDate(this.getMonday(date), "dd-MM-yyyy", "en-US") );
-    
-    
+    this.store.select(selectDate).subscribe((date) => this.DATE = formatDate(this.getMonday(date), "dd-MM-yyyy", "en-US"));
+
+
   }
 };

@@ -50,31 +50,37 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
 })
 export class DaypickerComponent {
 
-  private now : Date = new Date();
-  public startDate! : String;
-  public endDate! : String;
+  getMonday(date: Date): Date {
+    let weekDay = date.getDay();
+    date.setDate(date.getDate() - weekDay + (!weekDay ? -6 : 1));
+    return date;
+  }
 
-  updateDate(){
+  private now: Date = this.getMonday(new Date());
+  public startDate!: String;
+  public endDate!: String;
+
+  updateDate() {
     this.startDate = formatDate(this.now, "dd.MM.yyyy", "en-US");
     let localNow = new Date(this.now);
     localNow.setDate(localNow.getDate() + 6);
     this.endDate = formatDate(localNow, "dd.MM.yyyy", "en-US");
   }
 
-  constructor(private route : ActivatedRoute, private router : Router, private store : Store, private dateAdapter: DateAdapter<Date>){
+  constructor(private route: ActivatedRoute, private router: Router, private store: Store, private dateAdapter: DateAdapter<Date>) {
     this.updateDate();
-    this.store.select(selectDate).subscribe(date => {this.now = date; this.updateDate() });
+    this.store.select(selectDate).subscribe(date => { this.now = date; this.updateDate() });
     this.dateAdapter.setLocale("de-CH");
   }
 
-  setStartDate(input : any){
+  setStartDate(input: any) {
     let date = new Date(input["value"]);
     console.log(date);
 
-    let strDate : string = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-    this.store.dispatch(setDate({date : date}));
+    let strDate: string = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    this.store.dispatch(setDate({ date: date }));
     this.router.navigate(
-      [], 
+      [],
       {
         relativeTo: this.route,
         queryParams: { period: strDate },
