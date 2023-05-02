@@ -79,9 +79,15 @@ export class DaypickerComponent {
   }
 
 
-  updateStorageDate(date : Date){
+  updateStorageDate(date: Date) {
     let strDate: string = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
     this.store.dispatch(setDate({ date: date }));
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    console.log(this.getMonday(today), this.now);
+    if (this.now.getTime() === this.getMonday(today).getTime()) {
+      strDate = "now";
+    }
     this.router.navigate(
       [],
       {
@@ -91,13 +97,13 @@ export class DaypickerComponent {
       });
   }
 
-  addWeek(){
+  addWeek() {
     let currentDate = new Date(this.now);
     currentDate.setDate(currentDate.getDate() + 7);
     this.updateStorageDate(currentDate);
   }
 
-  removeWeek(){
+  removeWeek() {
     let currentDate = new Date(this.now);
     currentDate.setDate(currentDate.getDate() - 7);
     this.updateStorageDate(currentDate);
