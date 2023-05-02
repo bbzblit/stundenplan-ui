@@ -4,6 +4,8 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadClasses } from 'src/app/state/class/class.action';
 import { selectDate } from 'src/app/state/date/date.selector';
+import { setDate } from 'src/app/state/date/date.action';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-stunden-overview',
@@ -26,12 +28,11 @@ export class StundenOverviewComponent implements OnInit {
     this.store.dispatch(loadClasses());
     
     this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
-
+    if(this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)){
+      this.store.dispatch(setDate({date : moment(this.DATE, "DD-MM-YYYY").toDate()})); 
+    }
     this.store.select(selectDate).subscribe((date) => this.DATE = formatDate(this.getMonday(date), "dd-MM-yyyy", "en-US") );
     
-    console.log(this.DATE);
-    if(!this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)){
-      this.DATE = formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
-    }
+    
   }
 };
