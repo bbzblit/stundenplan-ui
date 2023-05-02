@@ -75,8 +75,11 @@ export class DaypickerComponent {
 
   setStartDate(input: any) {
     let date = new Date(input["value"]);
-    console.log(date);
+    this.updateStorageDate(date);
+  }
 
+
+  updateStorageDate(date : Date){
     let strDate: string = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
     this.store.dispatch(setDate({ date: date }));
     this.router.navigate(
@@ -86,6 +89,18 @@ export class DaypickerComponent {
         queryParams: { period: strDate },
         queryParamsHandling: 'merge'
       });
+  }
+
+  addWeek(){
+    let currentDate = new Date(this.now);
+    currentDate.setDate(currentDate.getDate() + 7);
+    this.updateStorageDate(currentDate);
+  }
+
+  removeWeek(){
+    let currentDate = new Date(this.now);
+    currentDate.setDate(currentDate.getDate() - 7);
+    this.updateStorageDate(currentDate);
   }
 
 }

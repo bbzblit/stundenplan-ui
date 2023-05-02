@@ -1,20 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-app-root{ height: 100%;}
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-root {
+    height: 100%;
+}
 
 
-app-stunden-overview{
+app-stunden-overview {
     width: 100%;
     height: 100%;
 }
 
+.mat-mdc-form-field-subscript-wrapper::before {
+    display: none !important;
+}
+
+.mobile-only {
+    display: none;
+}
+
 @media only screen and (max-width: 1000px) {
-    .desktop-only{
+    .desktop-only {
         display: none !important;
     }
-    app-stunden-overview{
+
+    app-stunden-overview {
         width: 100%;
+    }
+
+    .mobile-only {
+        display: block;
     }
 }
