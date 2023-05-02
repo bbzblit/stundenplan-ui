@@ -37,7 +37,7 @@ export class StundenOverviewComponent implements OnInit {
     this.store.dispatch(loadClasses());
 
     this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
-    if (this.DATE.match(/(\d{2}-(0?[1-9]|1[0-2])-2\d{3})/)) {
+    if (this.DATE.match(/(\d{1,2}-(0?[1-9]|1[0-2])-2\d{3})/)) {
       this.store.dispatch(setDate({ date: this.stringToDate(this.DATE) }));
     }
     this.store.select(selectDate).subscribe((date) => this.DATE = formatDate(this.getMonday(date), "dd-MM-yyyy", "en-US"));
