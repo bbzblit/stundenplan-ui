@@ -1,4 +1,4 @@
-import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
+import { DATE_PIPE_DEFAULT_OPTIONS, formatDate } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 
@@ -10,11 +10,12 @@ import {
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { setDate } from 'src/app/state/date/date.action';
+import { selectDate } from 'src/app/state/date/date.selector';
 
 @Injectable()
 export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<string> {
 
-  constructor(private _dateAdapter: DateAdapter<string>) { }
+  constructor() { }
 
   selectionFinished(date: string | null): DateRange<string> {
     return this._createFiveDayRange(date);
@@ -49,7 +50,20 @@ export class WeekSelectorStrategy implements MatDateRangeSelectionStrategy<strin
 })
 export class DaypickerComponent {
 
+  private now : Date = new Date();
+  public startDate! : String;
+  public endDate! : String;
+
+  updateDate(){
+    this.startDate = formatDate(this.now, "dd.MM.yyyy", "en-US");
+    let localNow = new Date(this.now);
+    localNow.setDate(localNow.getDate() + 6);
+    this.endDate = formatDate(localNow, "dd.MM.yyyy", "en-US");
+  }
+
   constructor(private route : ActivatedRoute, private router : Router, private store : Store, private dateAdapter: DateAdapter<Date>){
+    this.updateDate();
+    this.store.select(selectDate).subscribe(date => {this.now = date; this.updateDate() });
     this.dateAdapter.setLocale("de-CH");
   }
 

@@ -1,8 +1,8 @@
 <mat-form-field id="timepicker" appearance="fill">
     <mat-label>Enter Week</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-        <input (dateChange)="setStartDate($event)" matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
+        <input [defaultValue]="startDate" (dateChange)="setStartDate($event)" matStartDate placeholder="Start date">
+        <input matEndDate [defaultValue]="endDate" placeholder="End date">
     </mat-date-range-input>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
