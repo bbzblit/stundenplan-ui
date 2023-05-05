@@ -1,4 +1,15 @@
 <div (click)="openDetailedView()" class="appointment-wrapper">
-    <p id="title">{{appointment.title}} - {{pad(appointment.appointment_start.getHours())}}:{{pad(appointment.appointment_start.getMinutes())}}</p>
-    <p>{{appointment.place}}</p>
+    <div id="sidebar"></div>
+    <div id="appointment-content-wrapper">
+        <div id="data-wrapper">
+            <p id="appointment-start">
+                {{appointment.appointment_start.getHours() - (appointment.appointment_start.getHours() > 12 ? 12 :
+                0)}}:{{pad(appointment.appointment_start.getMinutes())}}
+                {{appointment.appointment_start.getHours() > 12 ? "PM" : "AM"}}
+            </p>
+            <p id="title">{{appointment.title}}
+            <p id="location">Location: {{appointment.place}}</p>
+        </div>
+        <button mat-stroked-button id="more-details-button">More Details</button>
+    </div>
 </div>
