@@ -6,7 +6,7 @@
     <div id="table-scroll">
         <div id="table-content">
 
-            <app-timetable-day *ngFor="let day of days; let idx = index" [start]="startTime" [end]="endTime" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day show-index"></app-timetable-day>
+            <app-timetable-day  [updateEvetSize]="updateEvents" *ngFor="let day of days; let idx = index" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day show-index"></app-timetable-day>
         </div>
     </div>
 </div>

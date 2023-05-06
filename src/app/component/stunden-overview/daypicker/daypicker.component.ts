@@ -84,7 +84,7 @@ export class DaypickerComponent {
     this.store.dispatch(setDate({ date: date }));
     let today = new Date();
     today.setHours(0, 0, 0, 0);
-    console.log(this.getMonday(today), this.now);
+
     if (this.now.getTime() === this.getMonday(today).getTime()) {
       strDate = "now";
     }

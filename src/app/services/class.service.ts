@@ -11,7 +11,6 @@ export class ClassService {
 
   constructor( private http: HttpClient) { }
   public loadAllClasses(): Observable<Array<Class>> {
-    console.log("Loding now all classes")
     return this.http.get<Array<Class>>("/api/v1/class/");
   }
 }

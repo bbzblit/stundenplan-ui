@@ -1,6 +1,8 @@
 import { ListKeyManager } from '@angular/cdk/a11y';
+import { IfStmt } from '@angular/compiler';
 import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
 import { Appointment } from 'src/app/model/appointment.model';
 import { Notification } from 'src/app/model/notification.model';
 import { selectAppointmentsOfWeek } from 'src/app/state/appointment/appointment.selector';
@@ -21,6 +23,7 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
   public startDate = new Date();
   private dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   private now = new Date();
+  public updateEvents: Subject<{start : number, end : number}> = new Subject<{start : number, end : number}>();
 
 
   public loadAppointments(appointments: Array<Appointment>, start: Date) {
@@ -31,11 +34,29 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
     appointments.forEach(appointment => { appointment = { ...appointment }; appointment.appointment_end = new Date(appointment.appointment_end); appointment.appointment_start = new Date(appointment.appointment_start); modefiedAppointments.push(appointment) })
 
     appointments = modefiedAppointments;
+    let _start = 24, _end = 0;
 
+    appointments.forEach(appointment => {
+      if(appointment.appointment_end.getHours() > _end){
+        _end = appointment.appointment_end.getHours();
+      }
+      if(appointment.appointment_start.getHours() < _start){
+        _start = appointment.appointment_start.getHours();
+      }
+
+    })
+
+    if(_start < _end){
+      this.startTime = _start - 1;
+      this.endTime = _end + 1;
+    }
+    
     while (day++ < 6) {
       this.groupedAppointments[day] = appointments.filter(appointment => appointment.appointment_start.getDay() == start.getDay());
       start.setDate(start.getDate() + 1);
     }
+
+    this.updateEvents.next({start : this.startTime, end : this.endTime});
   }
 
   loadAttachmentsOfWeek(){

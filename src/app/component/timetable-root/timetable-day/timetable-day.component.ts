@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/model/appointment.model';
 
 @Component({
@@ -12,14 +13,15 @@ export class TimetableDayComponent implements OnInit{
 
   @Input("showIndex") public showIndex : boolean = false;
 
-  @Input("start") public start : number = 7;
-  @Input("end") public end : number = 19;
-  
-
+  @Input("updateEvetSize")  updateEventSize!: Observable<{start : number, end : number}>;
+  public end : number = 19;
+  public start : number = 7;
   public hourPercent! : number;
 
   ngOnInit(){
-    this.hourPercent = 100 / (this.end - this.start); 
+
+    this.updateEventSize.subscribe(({start, end}) => {this.hourPercent = 100 / (end - start); this.start = start, this.end = end});
+    this.hourPercent = 100 / (this.start - this.end); 
   }
 
 }
