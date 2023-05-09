@@ -15,7 +15,7 @@ export class StundenOverviewComponent implements OnInit {
 
   public DATE = "";
 
-  constructor(private store: Store, private route: ActivatedRoute) { }
+  constructor(private store: Store, private route: ActivatedRoute, private router: Router) { }
 
   getMonday(date: Date): Date {
     let weekDay = date.getDay();
@@ -36,7 +36,20 @@ export class StundenOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadClasses());
 
-    this.DATE = this.route.snapshot.queryParamMap.get('period') || formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
+    let _date = this.route.snapshot.queryParamMap.get('period');
+
+    if(_date == null){
+      _date = formatDate(this.getMonday(new Date()), "dd-MM-yyyy", "en-US");
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: { period: "now" },
+          queryParamsHandling: 'merge'
+        });
+    }
+    this.DATE = _date;
+
     if (this.DATE.match(/(\d{1,2}-(0?[1-9]|1[0-2])-2\d{3})/)) {
       this.store.dispatch(setDate({ date: this.stringToDate(this.DATE) }));
     }
