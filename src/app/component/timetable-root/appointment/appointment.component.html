@@ -8,8 +8,8 @@
                 {{appointment.appointment_start.getHours() > 12 ? "PM" : "AM"}}
             </p>
             <p id="title">{{appointment.title}}
-            <p id="location">Location: {{appointment.place}}</p>
+            <p id="location">{{appointment.place.split("/")[0]}}</p>
         </div>
-        <button mat-stroked-button id="more-details-button">More Details</button>
     </div>
+
 </div>
