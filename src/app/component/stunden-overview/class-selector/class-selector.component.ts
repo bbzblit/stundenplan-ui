@@ -1,5 +1,6 @@
 import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Class } from 'src/app/model/class.model';
 import { clear, loadAppointments } from 'src/app/state/appointment/appointment.action';
@@ -13,7 +14,7 @@ import { selectAllClasses } from 'src/app/state/class/class.selector';
 export class ClassSelectorComponent implements OnInit {
 
 
-  constructor(private store: Store) { };
+  constructor(private store: Store, private router :  Router, private route: ActivatedRoute) { };
 
   private NON_ALPHABETIC = /[^A-Za-z0-9]/g;
   private availableClasses = new Array<Class>();
@@ -43,7 +44,7 @@ export class ClassSelectorComponent implements OnInit {
   }
 
   loadDefaultClass(): void{
-    let storageId = localStorage.getItem("classId")
+    let storageId = this.route.snapshot.queryParamMap.get('classId') || localStorage.getItem("classId")
     if(storageId == null){
       return;
     }
@@ -71,6 +72,13 @@ export class ClassSelectorComponent implements OnInit {
       return;
     }
     localStorage.setItem("classId", id + "");
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: { classId: id },
+        queryParamsHandling: 'merge'
+      });
     this.store.dispatch(loadAppointments({ classId: id }));
   }
 
