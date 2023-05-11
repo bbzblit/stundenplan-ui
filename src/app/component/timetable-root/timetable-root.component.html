@@ -4,7 +4,7 @@
     </div>
 
     <div id="table-scroll">
-        <div id="table-content">
+        <div [style.height]="(10 -  shortestAppointment * 1.4)*(endTime - startTime)+'rem'"  id="table-content">
 
             <app-timetable-day  [updateEvetSize]="updateEvents" *ngFor="let day of days; let idx = index" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day show-index"></app-timetable-day>
         </div>

@@ -17,6 +17,7 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
 
 
   public startTime = 7;
+  public shortestAppointment = -1;
   public endTime = 19;
   public days = Array(7);
   public groupedAppointments: Array<Array<Appointment>> = [];
@@ -36,18 +37,30 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
     appointments = modefiedAppointments;
     let _start = 24, _end = 0;
 
+    if(appointments.length !== 0){
+      this.shortestAppointment = -1;
+    }
+    
     appointments.forEach(appointment => {
-      if(appointment.appointment_end.getHours() > _end){
+      if(appointment.appointment_end.getHours() >= _end){
         _end = appointment.appointment_end.getHours();
       }
-      if(appointment.appointment_start.getHours() < _start){
+      if(appointment.appointment_start.getHours() <= _start){
         _start = appointment.appointment_start.getHours();
+      }
+
+      let _div = appointment.appointment_end.getHours() 
+      + (appointment.appointment_start.getMinutes() < appointment.appointment_end.getMinutes() ? 1 : 0) 
+      - appointment.appointment_start.getHours();
+
+      if(_div < this.shortestAppointment || this.shortestAppointment === -1) {
+        this.shortestAppointment = _div
       }
 
     })
 
     if(_start < _end){
-      this.startTime = _start - 1;
+      this.startTime = _start;
       this.endTime = _end + 1;
     }
     
