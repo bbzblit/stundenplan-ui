@@ -64,6 +64,7 @@ export class ClassSelectorComponent implements OnInit {
 
   clearAppointment(){
     this.store.dispatch(clear());
+    this.previewClasses = [...this.availableClasses];
   }
 
 
