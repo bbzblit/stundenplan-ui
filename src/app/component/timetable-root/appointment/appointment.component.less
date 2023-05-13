@@ -28,7 +28,8 @@
 
 #title,
 #location,
-#appointment-start {
+#appointment-start,
+#short-appointment-start {
     width: calc(100% - 1rem);
     text-align: left;
     padding-left: .5rem;
@@ -54,16 +55,32 @@
     margin-left: 10%;
 }
 
+#short-appointment-start{
+    display: none;
+}
+
+@media only screen and (max-width: 1450px) {
+    #short-appointment-start{
+        display: block;
+    }
+    #appointment-start{
+        display: none;
+    }
+}
+
+
 @media only screen and (max-width: 1000px) {
 
     #title,
     #location,
-    #appointment-start {
+    #appointment-start,
+    #short-appointment-start {
         text-align: center;
         margin-top: .1rem;
     }
 
-    #appointment-start{
+    #appointment-start,
+    #short-appointment-start{
         margin-top: 1rem;
     }
 
