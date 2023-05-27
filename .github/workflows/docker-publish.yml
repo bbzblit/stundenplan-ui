@@ -23,4 +23,4 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and push
       run: |
-        docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/bbzblit/stundenplan-ui/app:latest --push .
+        docker buildx build --platform linux/arm64 -t ghcr.io/bbzblit/stundenplan-ui/app:latest --push .
