@@ -7,8 +7,8 @@
             <mat-icon id="class-clear-icon">clear</mat-icon>
         </button>
 
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="selectedClass.blur();reloadAppointments(cls.id, $event)"
+        <mat-autocomplete aria-activedescendant #auto="matAutocomplete">
+            <mat-option *ngFor="let cls of previewClasses" (onSelectionChange)="reloadAppointments(cls.id, $event)"
                 [value]="cls.name">
                 {{cls.name}}
             </mat-option>

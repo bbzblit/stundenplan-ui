@@ -1,5 +1,5 @@
 import { NonNullAssert } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Class } from 'src/app/model/class.model';
@@ -20,6 +20,8 @@ export class ClassSelectorComponent implements OnInit {
   private availableClasses = new Array<Class>();
   public previewClasses = new Array<Class>();
   public defaultClass : Class = {id : -1, name : ""};
+
+  
   filterClasses(key: string): void {
     let keys = key.toLowerCase().split(" ");
 
