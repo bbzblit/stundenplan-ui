@@ -1,5 +1,7 @@
 FROM node:18 as build-stage
 
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+
 WORKDIR /app
 RUN git clone https://github.com/bbzblit/stundenplan-ui.git .
 RUN npm install
