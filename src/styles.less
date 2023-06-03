@@ -4,18 +4,18 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #4438666b;
+    background: #ffffff;
     border-radius: 30px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #190933;
+    background: #575757;
     border-radius: 30px;
     height: 20%;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background:  #250c4d;
+    background: #686868;
 }
 
 
@@ -25,6 +25,7 @@
 html,
 body {
     height: 100%;
+    --mdc-theme-primary: #8f75c0 !important;
 }
 
 body {
@@ -46,8 +47,40 @@ app-stunden-overview {
     display: none !important;
 }
 
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mat-mdc-icon-button {
+    color: #8f75c0 !important;
+}
+
+.mat-mdc-icon-button.mat-primary{
+    --mat-mdc-button-persistent-ripple-color: #8f75c0 !important;
+}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+.mat-calendar-body-selected {
+    background-color: #8f75c0 !important;
+}
+
+.mat-calendar-body-in-range::before {
+    background-color: #8f75c03f;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: rgb(19, 24, 31) !important;
+}
+
 .mobile-only {
     display: none;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #192029 !important;
+    border-radius: 10px !important;
+
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom-color: #403653 !important;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -62,8 +95,4 @@ app-stunden-overview {
     .mobile-only {
         display: block;
     }
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled){
-    background-color: rgb(19, 24, 31) !important;
 }
