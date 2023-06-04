@@ -18,7 +18,40 @@
     background: #686868;
 }
 
+:root {
+    --primary-dark: #192029;
+    --secondary-dark: #0e1014;
+    --background-dark: #0e1014;
+    --primary-light: #3f51b5;
+    --secondary-light: #DCDCDC;
+    --background-light: #fff;
 
+    --stundenplan-background-primary: var(--secondary-light);
+    --stundenplan-background-secondary: white;
+    --stundenplan-border-color: transparent;
+    --sidebar-color: #3183fe;
+    --appointment-color: #c2dafe;
+
+}
+
+:root .darkmode {
+    --stundenplan-background-primary: #192029;
+    --stundenplan-background-secondary: #13181f;
+    --stundenplan-border-color: rgb(48, 54, 61);
+    --sidebar-color: rgba(25, 12, 59, 0.61);
+    --appointment-color: #403653;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6,
+p {
+    color: black;
+}
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -43,45 +76,83 @@ app-stunden-overview {
     height: 100%;
 }
 
+
 .mat-mdc-form-field-subscript-wrapper::before {
     display: none !important;
 }
 
-.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
-.mat-mdc-icon-button {
-    color: #8f75c0 !important;
+.darkmode {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h5,
+    h6,
+    p,
+    label,
+    span,
+    td,
+    th,
+    input {
+        color: white;
+    }
+
+    polygon {
+        fill: white;
+    }
+
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
+    .mat-mdc-icon-button {
+        color: #8f75c0 !important;
+    }
+
+
+    .mat-mdc-icon-button.mat-primary {
+        --mat-mdc-button-persistent-ripple-color: #8f75c0 !important;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .mat-calendar-body-selected {
+        background-color: #8f75c0 !important;
+    }
+
+    .mat-calendar-body-in-range::before {
+        background-color: #8f75c03f;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: rgb(19, 24, 31) !important;
+    }
+
+    .mdc-menu-surface,
+    .mat-datepicker-content,
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+        background-color: var(--primary-dark) !important;
+    }
+
+    .mdc-text-field--filled .mdc-line-ripple::after {
+        border-bottom-color: #403653 !important;
+    }
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+        color: white;
+    }
 }
 
-.mat-mdc-icon-button.mat-primary{
-    --mat-mdc-button-persistent-ripple-color: #8f75c0 !important;
-}
-.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
-.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
-.mat-calendar-body-selected {
-    background-color: #8f75c0 !important;
-}
 
-.mat-calendar-body-in-range::before {
-    background-color: #8f75c03f;
-}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 10px !important;
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: rgb(19, 24, 31) !important;
 }
 
 .mobile-only {
     display: none;
 }
 
-.mat-mdc-dialog-container .mdc-dialog__surface {
-    background-color: #192029 !important;
-    border-radius: 10px !important;
-
-}
-
-.mdc-text-field--filled .mdc-line-ripple::after {
-    border-bottom-color: #403653 !important;
-}
 
 @media only screen and (max-width: 1000px) {
     .desktop-only {

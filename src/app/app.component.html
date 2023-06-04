@@ -1,10 +1,12 @@
-<header id="root-header">
-    <h1 id="title">Unofficial Stundenplan</h1>
+<header [ngClass]="{'darkmode':  isDarkmode}" id="root-header">
+  <h1 id="title">Unofficial Stundenplan</h1>
+  <mat-slide-toggle id="darkmode-lightmode-toggler" (change)="toggleDarkmode($event.checked)" [checked]="isDarkmode" color="warn">Enable
+    Darkmode</mat-slide-toggle>
 </header>
-<main id="main-content">
+<main [ngClass]="{'darkmode':  isDarkmode}" id="main-content">
   <router-outlet></router-outlet>
 </main>
-<footer id="root-footer">
+<footer [ngClass]="{'darkmode':  isDarkmode}" id="root-footer">
   <div class="desktop-only" id="copyright">
     <p>&copy; YM 2023 </p>
   </div>

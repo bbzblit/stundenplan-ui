@@ -1,12 +1,12 @@
 <div id="timetable-wrapper">
     <div id="table-title">
-        <p class="day-title" *ngFor="let day of days; let idx = index">{{getDayName(idx)}}<br/>{{getDate(idx)}}</p>
+        <p class="day-title stundenplan-background" *ngFor="let day of days; let idx = index">{{getDayName(idx)}}<br/>{{getDate(idx)}}</p>
     </div>
 
     <div id="table-scroll">
         <div [style.height]="(10 -  shortestAppointment * 1.4)*(endTime - startTime)+'rem'"  id="table-content">
 
-            <app-timetable-day  [updateEvetSize]="updateEvents" *ngFor="let day of days; let idx = index" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day show-index"></app-timetable-day>
+            <app-timetable-day  [updateEvetSize]="updateEvents" *ngFor="let day of days; let idx = index" [appointments]="groupedAppointments[idx]" [showIndex]="idx === 0" class="day stundenplan-background show-index"></app-timetable-day>
         </div>
     </div>
 </div>

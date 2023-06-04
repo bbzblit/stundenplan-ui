@@ -1,17 +1,16 @@
-@primary: #192029;
-@secondary: rgb(19, 24, 31);
-
 .day {
     height: 100%;
     width: 14%;
     display: block;
-    border: 1px rgb(48, 54, 61) solid;
+//    border: 1px rgb(48, 54, 61) solid;
     border-top: none;
-    background-color: @secondary;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    background-color: var(--stundenplan-background-secondary);
+
+    border: 1px var(--stundenplan-border-color) solid;
     &:not(:nth-child(2n)) {
-        background-color: @primary;
+        background-color: var(--stundenplan-background-primary);
     }
 }
 
@@ -61,24 +60,22 @@
         margin: 0;
         text-align: center;
         height: 100%;
-        border: 1px rgb(48, 54, 61) solid;
         border-bottom: none;
         padding: 0;
         margin-top: 1rem;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        background-color:  @secondary;
+        border: 1px var(--stundenplan-border-color) solid;
+        background-color: var(--stundenplan-background-secondary);
         &:not(:nth-child(2n)) {
-            background-color: @primary;
+            background-color: var(--stundenplan-background-primary);
         }
     }
 
 }
 
-
 .day-title {
     //font-weight: bold;
-    color: white;
     font-size: medium;
     margin: 0;
 }

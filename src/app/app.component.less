@@ -2,6 +2,7 @@
 @secondary: #172333;
 @primary-background: #0e1014;
 
+
 body{
     height: max-content;
     display: grid;
@@ -11,8 +12,8 @@ body{
     grid-template-areas: header, content, footer;
 }
 
-#root-header{
-    background-color: @primary;
+#root-header {
+    background-color: var(--primary-light);
     height: 4rem;
     grid-area: header;
     display: flex;
@@ -20,8 +21,12 @@ body{
     justify-content: space-between;
 }
 
+#root-header.darkmode{
+    background-color: var(--primary-dark);
+}
+
 #main-content{
-    background-color: @primary-background;
+    background-color: var(--background-light);
     height: calc(100% - 9rem);
     grid-area: content;
     display: grid;
@@ -32,13 +37,18 @@ body{
     }
 }
 
+#main-content.darkmode{
+    background-color: var(--background-dark);
+}
+
+
 #root-footer{
     grid-area: footer;
     height: 5rem;
     position: relative;
     right: 0;
     width: 100%;
-    background-color: @primary;
+    background-color: var(--primary-light);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -52,6 +62,10 @@ body{
         color: #fff;
     }
 
+}
+
+#root-footer.darkmode{
+    background-color: var(--primary-dark);
 }
 
 #footer-links{
@@ -120,4 +134,9 @@ body{
         justify-content: center;
         text-align: center;
     }
+}
+
+#darkmode-lightmode-toggler{
+    margin-right: 2rem;
+    color: white;
 }
