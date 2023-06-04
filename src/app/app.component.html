@@ -1,7 +1,8 @@
 <header [ngClass]="{'darkmode':  isDarkmode}" id="root-header">
   <h1 id="title">Unofficial Stundenplan</h1>
-  <mat-slide-toggle id="darkmode-lightmode-toggler" (change)="toggleDarkmode($event.checked)" [checked]="isDarkmode" color="warn">Enable
-    Darkmode</mat-slide-toggle>
+  <mat-slide-toggle id="darkmode-lightmode-toggler" (change)="toggleDarkmode($event.checked)" [checked]="isDarkmode"
+    color="warn"><p id="enable-darkmode-text">Enable
+    Darkmode</p></mat-slide-toggle>
 </header>
 <main [ngClass]="{'darkmode':  isDarkmode}" id="main-content">
   <router-outlet></router-outlet>
