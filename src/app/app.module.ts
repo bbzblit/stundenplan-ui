@@ -29,7 +29,6 @@ import { classReducer } from './state/class/class.reducer';
 import { DetailedEventViewComponent } from './component/timetable-root/appointment/detailed-event-view/detailed-event-view.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MobileAppointmentViewComponent } from './component/timetable-root/mobile-appointment-view/mobile-appointment-view.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
