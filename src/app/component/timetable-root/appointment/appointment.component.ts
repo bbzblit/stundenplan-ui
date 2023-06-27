@@ -12,7 +12,7 @@ export class AppointmentComponent {
 
   @Input("appointment") public appointment!: Appointment;
   public rainbowMode: boolean = false;
-
+  public lastTimestamp = -1;
   constructor(private dialog: MatDialog){}
 
   pad(n: number) {
@@ -29,6 +29,12 @@ export class AppointmentComponent {
 
   toggleRainbowMode(flag: boolean, event: Event){
     event.preventDefault();
+    if(this.lastTimestamp === event['timeStamp']){
+      return;
+    }
+    
+    this.lastTimestamp = event['timeStamp'];
+
     this.rainbowMode = flag;
   }
 }

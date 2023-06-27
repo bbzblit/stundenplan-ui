@@ -14,6 +14,7 @@ export class TimetableDayComponent implements OnInit{
   @Input("showIndex") public showIndex : boolean = false;
 
   @Input("updateEvetSize")  updateEventSize!: Observable<{start : number, end : number}>;
+  
   public end : number = 19;
   public start : number = 7;
   public hourPercent! : number;
