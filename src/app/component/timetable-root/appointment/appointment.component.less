@@ -76,12 +76,16 @@
 
 }
 
-#data-wrapper > p {
-    pointer-events: none
+#data-wrapper>p {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 @keyframes rainbow {
-    0%, 100% {
+
+    0%,
+    100% {
         background: linear-gradient(45deg,
                 rgba(255, 0, 0, 1) 0%,
                 rgba(255, 154, 0, 1) 10%,
