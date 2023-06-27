@@ -11,6 +11,7 @@ import { DetailedEventViewComponent } from './detailed-event-view/detailed-event
 export class AppointmentComponent {
 
   @Input("appointment") public appointment!: Appointment;
+  public rainbowMode: boolean = false;
 
   constructor(private dialog: MatDialog){}
 
@@ -24,5 +25,10 @@ export class AppointmentComponent {
       width: '40rem',
       data : {appointment: this.appointment }
     });
+  }
+
+  toggleRainbowMode(flag: boolean, event: Event){
+    event.preventDefault();
+    this.rainbowMode = flag;
   }
 }
