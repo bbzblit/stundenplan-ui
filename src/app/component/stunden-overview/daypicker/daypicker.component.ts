@@ -109,4 +109,10 @@ export class DaypickerComponent {
     this.updateStorageDate(currentDate);
   }
 
+  showCurrentWeek() {
+    let currentWeekStart = this.getMonday(new Date());
+    currentWeekStart.setHours(0, 0, 0, 0);
+    this.updateStorageDate(currentWeekStart);
+  }
+
 }

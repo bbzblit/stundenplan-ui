@@ -1,4 +1,4 @@
-#daypicker-wrapper{
+#daypicker-wrapper #selector-wrapper{
     display: flex;
 }
 
@@ -6,12 +6,19 @@
     margin-top: auto;
     margin-bottom: auto;
 }
-
+#daypicker-wrapper,
 #timepicker{
     display: flex;
     align-items: center;
     justify-content: center;
 
+}
+#today-button{
+    margin-bottom: .5rem;
+}
+#daypicker-wrapper{
+    flex-direction: column;
+    margin-top: -3rem;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -19,5 +26,9 @@
     #timepicker {
         width: 90%;
         max-width: 20rem;
+    }
+
+    #daypicker-wrapper{
+        margin: 0;
     }
 }

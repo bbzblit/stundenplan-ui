@@ -1,17 +1,21 @@
 <div id="daypicker-wrapper">
-    <button (click)="removeWeek()" class="daypicker-button" mat-icon-button color="primary">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-    <mat-form-field id="timepicker" appearance="fill">
-        <mat-label>Enter Week</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-            <input [defaultValue]="startDate" (dateChange)="setStartDate($event)" matStartDate placeholder="Start date">
-            <input matEndDate [defaultValue]="endDate" placeholder="End date">
-        </mat-date-range-input>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-    <button (click)="addWeek()" class="daypicker-button" mat-icon-button color="primary">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
+    <button (click)="showCurrentWeek()" mat-stroked-button id="today-button">Today</button>
+    <div id="selector-wrapper">
+        <button (click)="removeWeek()" class="daypicker-button" mat-icon-button color="primary">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <mat-form-field id="timepicker" appearance="fill">
+            <mat-label>Enter Week</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input [defaultValue]="startDate" (dateChange)="setStartDate($event)" matStartDate
+                    placeholder="Start date">
+                <input matEndDate [defaultValue]="endDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <button (click)="addWeek()" class="daypicker-button" mat-icon-button color="primary">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
 </div>
