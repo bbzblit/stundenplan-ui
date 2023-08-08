@@ -29,6 +29,7 @@ import { classReducer } from './state/class/class.reducer';
 import { DetailedEventViewComponent } from './component/timetable-root/appointment/detailed-event-view/detailed-event-view.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MobileAppointmentViewComponent } from './component/timetable-root/mobile-appointment-view/mobile-appointment-view.component';
+import { WelcomeComponent } from './component/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MobileAppointmentViewComponent } from './component/timetable-root/mobil
     AppointmentComponent,
     DetailedEventViewComponent,
     MobileAppointmentViewComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

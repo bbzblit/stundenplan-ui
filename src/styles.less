@@ -76,6 +76,9 @@ app-stunden-overview {
     height: 100%;
 }
 
+a, a:hover{
+    color: black;
+}
 
 .mat-mdc-form-field-subscript-wrapper::before {
     display: none !important;
@@ -149,6 +152,17 @@ app-stunden-overview {
     button[mat-stroked-button]{
         border-color: lightgray;
     }
+    a, a:hover{
+        color: white;
+    }
+}
+
+a{
+    text-decoration: underline;
+}
+
+a:hover{
+    text-decoration: none;
 }
 
 
@@ -160,6 +174,7 @@ app-stunden-overview {
 .mobile-only {
     display: none;
 }
+
 
 
 @media only screen and (max-width: 1000px) {

@@ -1,0 +1,33 @@
+<div id="welcome-wrapper">
+    <h1>Wilkommen auf stundenplan.bbzbl-it.dev</h1>
+    <div id="dialog-content">
+        <p>
+            Bei dieser Website handelt es sich um eine inoffizielle Implementierung des <a
+                href="https://go.bbzbl.com/stundenplan">BBZBL Stundenplanes</a>
+            er wurde von Schülern der Schule erstellt und soll als ein funktionierender Ersatz zu dem offiziellen
+            Stundenplan dienen.
+            <br />
+            <br />
+            Aktuell bietet er über ein Fulltextsearch Feld die Möglichkeit nach seiner Klasse zu suchen und so einfach
+            zu sehen, wann man Schule hat. Dieser Stundenplan überbietet den offiziellen nicht nur in der Suchfunktion
+            nach Klassen, sondern auch bei weitem in der Performance. Durch ein schnelles Backend können in
+            sekundenschnelle alle Stunden für ein ganzes Semester geladen werden.
+            <br />
+            <br />
+            Die Daten werden immer nach einer bestimmten Periode von dem offiziellen Stundenplan heruntergeladen und
+            anschliessend in der Datenbank auf dem Server gespeichert. Es kann also vorkommen, dass die Daten erst kurz
+            nach dem offiziellen Stundenplan verfügbar sind. Bei verdacht auf falsche oder nicht vorhandene Daten bitte
+            per Mail an <a href="mailto:upport@bbzbl-it.dev">support@bbzbl-it.dev</a> melden.
+            <br />
+            <br />
+            Bei Fragen oder Problemen mit dieser Website helfen wir gerne per Mail unter der Adresse <a
+                href="mailto:support@bbzbl-it.dev">support@bbzbl-it.dev</a> aus.
+        </p>
+    </div>
+    <div id="action">
+        <button (click)="neverShowDialogAgain()" mat-stroked-button>Never show it again</button>
+    </div>
+    <button (click)="dialogRef.close()" id="close-action" mat-icon-button color="primary">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
