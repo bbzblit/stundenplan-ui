@@ -107,6 +107,6 @@ export class TimetableRootComponent implements OnInit, AfterContentInit {
   getDate(div: number) {
     let _tmp_date = new Date(this.startDate.getTime());
     _tmp_date.setDate(_tmp_date.getDate() + div);
-    return _tmp_date.getDate() + "." + _tmp_date.getMonth();
+    return _tmp_date.getDate() + "." + (_tmp_date.getMonth() + 1);
   }
 }
